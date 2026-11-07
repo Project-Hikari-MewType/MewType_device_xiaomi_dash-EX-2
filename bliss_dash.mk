@@ -11,7 +11,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/xiaomi/dash/device.mk)
 
 # Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/bliss/config/common_full_phone.mk)
+$(call soong_config_set_bool,fastbootd,bypass_lock_state,true)
+TARGET_HAS_UDFPS := true
+GAPPS_ARCH := arm64
 
 ifeq ($(PRODUCT_BRAND),EvolutionX)
 # Inherit some common Evolution-X stuff.
@@ -20,7 +23,7 @@ endif
 
 # Device identifier.
 PRODUCT_DEVICE := dash
-PRODUCT_NAME := lineage_dash
+PRODUCT_NAME := bliss_dash
 PRODUCT_BRAND := POCO
 PRODUCT_MODEL := 2602BPC18G
 PRODUCT_MANUFACTURER := Xiaomi
